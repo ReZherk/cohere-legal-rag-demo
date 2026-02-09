@@ -26,6 +26,7 @@ Respuesta final al usuario
 ```
 
 ### 🔢 Tecnologías Clave:
+
 - **Embeddings**: `embed-multilingual-v3.0` para búsqueda semántica
 - **Rerank**: `rerank-v3.5` para refinamiento de resultados
 - **Generación**: `command-r-plus` para respuestas contextualizadas
@@ -33,6 +34,7 @@ Respuesta final al usuario
 ## 🚀 Instalación
 
 ### Requisitos
+
 - Python 3.12+
 - API Key de Cohere (obtén una gratis en [cohere.com](https://cohere.com))
 - NumPy (para cálculos de similaridad)
@@ -40,23 +42,27 @@ Respuesta final al usuario
 ### Pasos
 
 1. **Clonar el repositorio**
+
 ```bash
-git clone https://github.com/tu-usuario/cohere-legal-rag-demo.git
+git clone https://github.com/ReZherk/cohere-legal-rag-demo.git
 cd cohere-legal-rag-demo
 ```
 
 2. **Crear entorno virtual**
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
 ```
 
 3. **Instalar dependencias**
+
 ```bash
 pip install -r requirements.txt
 ```
 
 4. **Configurar API Key**
+
 ```bash
 cp .env.example .env
 # Edita .env y agrega tu COHERE_API_KEY
@@ -111,14 +117,17 @@ cohere-legal-rag-demo/
 ## 🎓 Conceptos Clave
 
 ### ¿Qué son los Embeddings?
+
 Los embeddings son representaciones vectoriales (numéricas) de texto que capturan su significado semántico. El sistema usa `embed-multilingual-v3.0` de Cohere para convertir documentos y consultas en vectores de 1024 dimensiones, permitiendo búsqueda por significado en lugar de solo por palabras clave.
 
 **Ventaja**: Encuentra "plazo para apelar" incluso si el documento dice "término de apelación".
 
 ### ¿Qué es Rerank?
+
 Cohere Rerank es un modelo especializado que toma una consulta y una lista de documentos, y los **reordena** según su relevancia semántica. Es mucho más preciso que búsquedas por palabras clave y complementa perfectamente la búsqueda inicial por embeddings.
 
 ### ¿Por qué usar RAG?
+
 - **Contexto actualizado**: El LLM usa información específica de tus documentos
 - **Menos alucinaciones**: Respuestas basadas en datos reales
 - **Dominio específico**: Ideal para contenido jurídico, médico, técnico, etc.

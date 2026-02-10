@@ -2,7 +2,10 @@
 cohere>=5.0.0
 python-dotenv>=1.0.0
 numpy>=1.24.0
-
+pydantic>=2.10.0
+pydantic-ai>=0.0.14
 # Optional: Para mejorar el proyecto
 # chromadb>=0.4.0  # Base de datos vectorial
 # streamlit>=1.28.0  # Interfaz web
+
+

@@ -221,7 +221,7 @@ RESPUESTA:"""
         
         return response.text
     
-    def query(self, query: str, top_k: int = 5, initial_candidates: int = 20) -> Dict:
+    def query(self, query: str, top_k: int = 5, initial_candidates: int = 20, structured: bool = False) -> Dict:
         """
         Método principal: procesa una consulta completa
         
@@ -229,10 +229,15 @@ RESPUESTA:"""
             query: Pregunta del usuario
             top_k: Número de documentos top después de rerank
             initial_candidates: Número de candidatos iniciales (búsqueda semántica)
-            
+            structured: Si True, usa Pydantic AI para respuestas estructuradas
+
         Returns:
             Diccionario con respuesta y metadatos
         """
+        # Modo estructurado con Pydantic AI
+        if structured:
+            from legal_agent import run_legal_agent
+            return run_legal_agent(self, query)
         print(f"\n{'='*60}")
         print(f"CONSULTA: {query}")
         print(f"{'='*60}")

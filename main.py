@@ -8,6 +8,38 @@ from dotenv import load_dotenv
 from rag_system import LegalRAGSystem
 
 
+def mostrar_respuesta_estructurada(resultado: dict):
+    """
+    Muestra una respuesta estructurada de forma formateada
+
+    Args:
+        resultado: Diccionario con 'answer', 'fuentes', 'confianza'
+    """
+    # Emoji según nivel de confianza
+    confianza_emoji = {
+        "alta": "🟢",
+        "media": "🟡",
+        "baja": "🔴"
+    }
+
+    emoji = confianza_emoji.get(resultado.get('confianza', 'media'), "⚪")
+
+    print("\n" + "=" * 60)
+    print("📋 RESPUESTA:")
+    print("=" * 60)
+    print(resultado['answer'])
+
+    # Mostrar fuentes
+    if resultado.get('fuentes'):
+        print("\n📚 FUENTES CITADAS:")
+        for fuente in resultado['fuentes']:
+            relevancia_pct = fuente['relevancia'] * 100
+            print(f"   • {fuente['nombre']} (relevancia: {relevancia_pct:.0f}%)")
+
+    # Mostrar nivel de confianza
+    print(f"\n{emoji} Nivel de confianza: {resultado.get('confianza', 'N/A').upper()}")
+
+
 def main():
     """
     Función principal de demostración
@@ -56,9 +88,10 @@ def main():
     print("\n¿Qué deseas hacer?")
     print("1. Ver demo automática (ejecuta todas las consultas)")
     print("2. Hacer consultas personalizadas")
-    
-    opcion = input("\nSelecciona (1 o 2): ").strip()
-    
+    print("3. Modo estructurado con Pydantic AI (respuestas con fuentes y confianza)")
+
+    opcion = input("\nSelecciona (1, 2 o 3): ").strip()
+
     if opcion == "1":
         # Demo automática
         print("\n🚀 Ejecutando demo automática...\n")
@@ -94,7 +127,32 @@ def main():
             
             print(resultado['answer'])
             print("\n" + "-" * 60 + "\n")
-    
+
+    elif opcion == "3":
+        # Modo estructurado con Pydantic AI
+        print("\n🧠 Modo estructurado con Pydantic AI activado")
+        print("Las respuestas incluirán fuentes citadas y nivel de confianza")
+        print("Escribe 'salir' para terminar\n")
+
+        while True:
+            consulta = input("Tu consulta: ").strip()
+
+            if consulta.lower() in ['salir', 'exit', 'quit']:
+                print("\n👋 ¡Hasta luego!")
+                break
+
+            if not consulta:
+                continue
+
+            resultado = rag.query(
+                query=consulta,
+                structured=True
+            )
+
+            # Mostrar respuesta estructurada
+            mostrar_respuesta_estructurada(resultado)
+            print("\n" + "-" * 60 + "\n")
+
     else:
         print("❌ Opción no válida")
     

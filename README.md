@@ -148,17 +148,6 @@ top_k = 5
 model = "command-r-plus"  # o "command-r"
 ```
 
-## 🧪 Próximos Pasos
-
-Este es un proyecto de **aprendizaje**. Para tu proyecto final más grande:
-
-- [ ] Integrar base de datos vectorial (ChromaDB, Pinecot, Weaviate)
-- [ ] Agregar embeddings para búsqueda semántica inicial
-- [ ] Implementar chunking inteligente de documentos largos
-- [ ] Añadir caché de respuestas
-- [ ] Crear API REST con FastAPI
-- [ ] Interfaz web con Streamlit
-
 ## 📚 Recursos
 
 - [Cohere Documentation](https://docs.cohere.com)

@@ -1,11 +1,19 @@
-# Core dependencies
+# Cohere: librería para usar modelos de inteligencia artificial de Cohere.
+# Sirve para generar texto, clasificar, buscar semánticamente y trabajar con embeddings.
 cohere>=5.0.0
+
+# python-dotenv: permite cargar variables de entorno desde un archivo .env.
+# Útil para manejar configuraciones sensibles (tokens, claves, contraseñas) sin hardcodearlas en el código.
 python-dotenv>=1.0.0
+
+# NumPy: librería fundamental para cálculos numéricos y manejo de arreglos/matrices.
+# Ofrece operaciones matemáticas rápidas y eficientes, base para ciencia de datos y machine learning.
 numpy>=1.24.0
+
+# Pydantic: herramienta para validar y manejar datos usando modelos basados en Python.
+# Garantiza que los datos tengan el tipo y formato correcto, muy útil para APIs y configuraciones.
 pydantic>=2.10.0
+
+# pydantic-ai: extensión de Pydantic enfocada en integraciones con inteligencia artificial.
+# Facilita la definición de entradas/salidas de modelos de IA y su validación automática.
 pydantic-ai>=0.0.14
-# Optional: Para mejorar el proyecto
-# chromadb>=0.4.0  # Base de datos vectorial
-# streamlit>=1.28.0  # Interfaz web
-
-
